@@ -7,13 +7,13 @@ class Vehicle:
 
     def __init__(self,engine: Engine,chassis: str, price: float,model: str,year: int,
         consumption: float, placa:str):
-        self.engine = engine
-        self.chassis = chassis
-        self.price = price
-        self.model = model
-        self.year = year
-        self.consumption = consumption
-        self.placa=placa
+        self.__engine__ = engine
+        self.__chassis__ = chassis
+        self.__price__ = price
+        self.__model__ = model
+        self.__year__ = year
+        self.__consumption__ = consumption
+        self.__placa__=placa
     def __str__(self):
         return f"Vehicle: {self.model} - {self.year} - {self.price} - \
             {self.consumption} - {self.engine} - {self.chassis}"
