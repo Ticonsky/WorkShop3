@@ -30,7 +30,25 @@ class Catalog:
                 self.__vehicles.remove(vehicle)
                 break
     @run_all_decorators
-    def update_vehicle(self, placa):
+    def get_by_supply(self, supply:str):
+        for vehicle in self.__vehicles:
+            if supply==vehicle.supply:
+                getSupply=[]
+                getSupply.append(vehicle)
+                break
+    @run_all_decorators
+    def get_by_rangeYears(self, year:str):
+        for vehicle in self.__vehicles:
+            x=input()
+            y=input()
+            if year==vehicle.year and year>x and year<y:
+                getRangeYear=[]
+                getRangeYear.append(vehicle)
+                return getRangeYear
+                break
+                
+    @run_all_decorators
+    def update_vehicle(self, placa:str):
         for vehicle in self.__vehicles:
             if placa == vehicle.placa:
                 print("-----------------------------------------")
