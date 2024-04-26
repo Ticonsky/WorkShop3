@@ -11,12 +11,12 @@ class Engine:
         stability: str,
         weight: float,
     ):
-        self.__torque__ = torque
-        self.__maximum_speed__ = maximum_speed
-        self.__dimenssions__ = dimenssions
-        self.__power__ = power
-        self.__stability__ = stability
-        self.__weight__ = weight
+        self.__torque = torque
+        self.__maximum_speed = maximum_speed
+        self.__dimenssions = dimenssions
+        self.__power = power
+        self.__stability= stability
+        self.__weight = weight
 
 class GasEngine(Engine):
     """This class represents the behavior of a gas engine"""
