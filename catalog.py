@@ -1,7 +1,9 @@
-from decoradores import calcular_tiempo, calcular_memoria
+
+from decoradores import calcular_tiempo, calcular_memoria, log_funcion, lru_cache_size
 from typing import List
 from time import time
 from vehicles import Vehicle
+
 
 class Catalog:
 
@@ -13,31 +15,35 @@ class Catalog:
             cls.instance = super(Catalog, cls).__new__(cls)
             cls.instance.vehicles = []
         return cls.instance
-    
-
+    @lru_cache_size(5)
+    @log_funcion
     @calcular_tiempo
     @calcular_memoria
     def get_all_vehicles(self) -> List[Vehicle]:
         return self.__vehicles
-    
+    @lru_cache_size
+    @log_funcion
     @calcular_tiempo
     @calcular_memoria
     def get_price_by_range(self, min_price: float, max_price: float) -> List[Vehicle]:
         return [vehicle for vehicle in self.__vehicles if min_price <= vehicle.price <= max_price]
-    
+    @lru_cache_size(5)
+    @log_funcion
     @calcular_tiempo
     @calcular_memoria
     def add_vehicle(self, vehicle: Vehicle):
         self.__vehicles.append(vehicle)
-
+    @lru_cache_size(5)
+    @log_funcion
     @calcular_tiempo
     @calcular_memoria
     def remove_vehicle(self, placa):
         for vehicle in self.__vehicles:
             if placa == vehicle.placa:
                 self.__vehicles.remove(vehicle)
-                break  
-
+                break
+    @lru_cache_size(5)  
+    @log_funcion           
     @calcular_tiempo
     @calcular_memoria
     def update_vehicle(self, placa):
@@ -60,25 +66,23 @@ class Catalog:
                 if self.atribute==1:
                     self.atribute=="engine"
                 if self.atribute==2:
-                    self.atribute=="engine"
+                    self.atribute=="chassis"
                 if self.atribute==3:
-                    self.atribute=="engine"
+                    self.atribute=="price"
                 if self.atribute==4:
-                    self.atribute=="engine"
+                    self.atribute=="model"
                 if self.atribute==5:
-                    self.atribute=="engine"
+                    self.atribute=="year"
                 if self.atribute==6:
-                    self.atribute=="engine"
+                    self.atribute=="comsuption"
                 if self.atribute==7:
-                    self.atribute=="engine"
+                    self.atribute=="length"
                 if self.atribute==8:
-                    self.atribute=="engine"
+                    self.atribute=="placa"
                 if self.atribute==9:
-                    self.atribute=="engine"
+                    self.atribute=="trade"
                 if self.atribute==10:
-                    self.atribute=="engine"
-                if self.atribute==11:
-                    self.atribute=="engine" 
+                    self.atribute=="combustible_type"
                 else:
                     print("opcion invalida")
                     break
