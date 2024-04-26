@@ -56,3 +56,9 @@ def lru_cache_size(maxsize):
             return result
         return wrapper
     return decorator
+
+def run_all_decorators():
+    lru_cache_size(5)
+    log_funcion()
+    calcular_memoria()
+    calcular_tiempo()
