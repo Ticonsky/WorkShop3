@@ -1,5 +1,4 @@
-
-from decoradores import calcular_tiempo, calcular_memoria, log_funcion, lru_cache_size
+from decoradores import calcular_tiempo, calcular_memoria, log_funcion, lru_cache_size, run_all_decorators
 from typing import List
 from time import time
 from vehicles import Vehicle
@@ -15,37 +14,22 @@ class Catalog:
             cls.instance = super(Catalog, cls).__new__(cls)
             cls.instance.vehicles = []
         return cls.instance
-    @lru_cache_size(5)
-    @log_funcion
-    @calcular_tiempo
-    @calcular_memoria
+    @run_all_decorators
     def get_all_vehicles(self) -> List[Vehicle]:
         return self.__vehicles
-    @lru_cache_size
-    @log_funcion
-    @calcular_tiempo
-    @calcular_memoria
+    @run_all_decorators
     def get_price_by_range(self, min_price: float, max_price: float) -> List[Vehicle]:
         return [vehicle for vehicle in self.__vehicles if min_price <= vehicle.price <= max_price]
-    @lru_cache_size(5)
-    @log_funcion
-    @calcular_tiempo
-    @calcular_memoria
+    @run_all_decorators
     def add_vehicle(self, vehicle: Vehicle):
         self.__vehicles.append(vehicle)
-    @lru_cache_size(5)
-    @log_funcion
-    @calcular_tiempo
-    @calcular_memoria
+    @run_all_decorators
     def remove_vehicle(self, placa):
         for vehicle in self.__vehicles:
             if placa == vehicle.placa:
                 self.__vehicles.remove(vehicle)
                 break
-    @lru_cache_size(5)  
-    @log_funcion           
-    @calcular_tiempo
-    @calcular_memoria
+    @run_all_decorators
     def update_vehicle(self, placa):
         for vehicle in self.__vehicles:
             if placa == vehicle.placa:
